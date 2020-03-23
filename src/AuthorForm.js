@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import { postAuthor, resetErrors } from "./redux/actions/index";
 
 class AuthorForm extends Component {
@@ -9,6 +8,10 @@ class AuthorForm extends Component {
     last_name: "",
     imageUrl: "",
     books: []
+  };
+
+  textChangeHandler = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   componentWillUnmount() {
@@ -37,19 +40,37 @@ class AuthorForm extends Component {
             <div className="input-group-prepend">
               <span className="input-group-text">First Name</span>
             </div>
-            <input type="text" className="form-control" name="first_name" />
+            <input
+              type="text"
+              className="form-control"
+              name="first_name"
+              placeholder="First Name"
+              onChange={this.textChangeHandler}
+            />
           </div>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text">Last Name</span>
             </div>
-            <input type="text" className="form-control" name="last_name" />
+            <input
+              type="text"
+              className="form-control"
+              name="last_name"
+              placeholder="Last Name"
+              onChange={this.textChangeHandler}
+            />
           </div>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text">Image URL</span>
             </div>
-            <input type="text" className="form-control" name="imageUrl" />
+            <input
+              type="text"
+              className="form-control"
+              name="imageUrl"
+              placeholder="Image URL"
+              onChange={this.textChangeHandler}
+            />
           </div>
           <input type="submit" />
         </form>
